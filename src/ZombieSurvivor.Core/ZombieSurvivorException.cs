@@ -10,4 +10,9 @@ public class ZombieSurvivorException : Exception
     {
         return new ZombieSurvivorException("Only can perform 3 actions.");
     }
+
+    public static ZombieSurvivorException CannotHurtADeadSurvivor()
+    {
+        return new ZombieSurvivorException("Cannot hurt a dead player.");
+    }
 }

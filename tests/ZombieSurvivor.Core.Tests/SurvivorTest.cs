@@ -42,9 +42,12 @@ public class SurvivorTest
 
         survivor.Hurt();
         survivor.Hurt();
-        survivor.Hurt();
 
-        survivor.Wounds.Should().Be(2);
+        FluentActions
+            .Invoking(() => survivor.Hurt())
+            .Should()
+            .Throw<ZombieSurvivorException>()
+            .WithMessage("Cannot hurt a dead player.");
     }
 
     [Fact]
