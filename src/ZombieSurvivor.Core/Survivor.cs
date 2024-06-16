@@ -11,12 +11,17 @@ public sealed class Survivor
 
     public Name Name { get; }
 
-    public Wounds Wounds { get; }
+    public Wounds Wounds { get; private set; }
 
     public Actions Actions { get; }
 
     public static Survivor Create(Name name)
     {
         return new Survivor(name);
+    }
+
+    public void Hurt()
+    {
+        Wounds = Wounds.AddWound();
     }
 }

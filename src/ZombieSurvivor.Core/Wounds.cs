@@ -35,4 +35,9 @@ public sealed class Wounds
     {
         return _value.GetHashCode();
     }
+
+    internal Wounds AddWound()
+    {
+        return new Wounds(_value + 1);
+    }
 }

@@ -13,4 +13,14 @@ public class SurvivorTest
         survivor.Wounds.Should().Be(0);
         survivor.Actions.Should().Be(3);
     }
+
+    [Fact]
+    public void Should_Hurt_Survivor()
+    {
+        var survivor = Survivor.Create("Luffy");
+
+        survivor.Hurt();
+
+        survivor.Wounds.Should().Be(1);
+    }
 }
