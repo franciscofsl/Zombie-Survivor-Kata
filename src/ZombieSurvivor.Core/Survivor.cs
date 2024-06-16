@@ -2,6 +2,8 @@
 
 public sealed class Survivor
 {
+    private const int MaxWoundsToDie = 2;
+
     private Survivor(Name name)
     {
         Name = name;
@@ -22,8 +24,13 @@ public sealed class Survivor
 
     public void Hurt()
     {
+        if (Wounds == MaxWoundsToDie)
+        {
+            return;
+        }
+
         Wounds = Wounds.AddWound();
     }
 
-    public bool IsDie() => Wounds == 2;
+    public bool IsDie() => Wounds == MaxWoundsToDie;
 }

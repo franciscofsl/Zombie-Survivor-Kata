@@ -34,4 +34,16 @@ public class SurvivorTest
 
         survivor.IsDie().Should().BeTrue();
     }
+
+    [Fact]
+    public void Should_Not_Hurt_Died_Survivor()
+    {
+        var survivor = Survivor.Create("Chopper");
+
+        survivor.Hurt();
+        survivor.Hurt();
+        survivor.Hurt();
+
+        survivor.Wounds.Should().Be(2);
+    }
 }
