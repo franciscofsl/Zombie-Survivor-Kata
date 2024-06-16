@@ -1,4 +1,7 @@
 Zombie Survivor Kata
+
+![ci](https://github.com/franciscofsl/Zombie-Survivor-Kata/actions/workflows/ci.yml/badge.svg)
+
 ====================
 Source: [https://github.com/ardalis/kata-catalog](https://github.com/ardalis/kata-catalog)
 
