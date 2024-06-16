@@ -24,7 +24,7 @@ public sealed class Survivor
 
     public void Hurt()
     {
-        if (Wounds == MaxWoundsToDie)
+        if (IsDie())
         {
             throw ZombieSurvivorException.CannotHurtADeadSurvivor();
         }
