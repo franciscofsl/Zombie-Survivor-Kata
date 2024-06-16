@@ -24,4 +24,6 @@ public sealed class Survivor
     {
         Wounds = Wounds.AddWound();
     }
+
+    public bool IsDie() => Wounds == 2;
 }

@@ -23,4 +23,15 @@ public class SurvivorTest
 
         survivor.Wounds.Should().Be(1);
     }
+
+    [Fact]
+    public void Survivor_Should_Die_If_Receive_2_Wounds()
+    {
+        var survivor = Survivor.Create("Zoro");
+
+        survivor.Hurt();
+        survivor.Hurt();
+
+        survivor.IsDie().Should().BeTrue();
+    }
 }
