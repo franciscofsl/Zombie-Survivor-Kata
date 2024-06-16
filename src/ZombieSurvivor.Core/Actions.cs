@@ -8,7 +8,7 @@ public sealed class Actions
     {
         if (value < 0)
         {
-            throw new ArgumentException("Actions cannot be negative");
+            throw ZombieSurvivorException.OnlyCanPerform3Actions();
         }
 
         _value = value;
@@ -32,4 +32,9 @@ public sealed class Actions
     }
 
     public override int GetHashCode() => _value;
+
+    public Actions Perform()
+    {
+        return new Actions(_value - 1);
+    }
 }

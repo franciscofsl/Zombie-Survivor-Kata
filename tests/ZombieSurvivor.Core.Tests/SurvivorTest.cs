@@ -46,4 +46,20 @@ public class SurvivorTest
 
         survivor.Wounds.Should().Be(2);
     }
+
+    [Fact]
+    public void Should_Not_Perform_More_Than_3_Actions()
+    {
+        var survivor = Survivor.Create("Nami");
+
+        survivor.PerformAction();
+        survivor.PerformAction();
+        survivor.PerformAction();
+
+        FluentActions
+            .Invoking(() => survivor.PerformAction())
+            .Should()
+            .Throw<ZombieSurvivorException>()
+            .WithMessage("Only can perform 3 actions.");
+    }
 }

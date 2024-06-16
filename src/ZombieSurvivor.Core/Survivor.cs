@@ -15,7 +15,7 @@ public sealed class Survivor
 
     public Wounds Wounds { get; private set; }
 
-    public Actions Actions { get; }
+    public Actions Actions { get; private set; }
 
     public static Survivor Create(Name name)
     {
@@ -33,4 +33,9 @@ public sealed class Survivor
     }
 
     public bool IsDie() => Wounds == MaxWoundsToDie;
+
+    public void PerformAction()
+    {
+        Actions = Actions.Perform();
+    }
 }
