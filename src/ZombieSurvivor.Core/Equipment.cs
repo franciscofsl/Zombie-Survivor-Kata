@@ -28,5 +28,5 @@ public sealed class Equipment
 
     internal EquipmentCollection InHand() => _inHand;
 
-    public EquipmentCollection InReserve() => _inReserve;
+    internal EquipmentCollection InReserve() => _inReserve;
 }
