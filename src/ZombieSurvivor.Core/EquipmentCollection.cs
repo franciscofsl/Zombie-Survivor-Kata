@@ -21,7 +21,7 @@ public class EquipmentCollection : IEnumerable<Item>
         return GetEnumerator();
     }
 
-    public bool HasCapacity() => _items.Count < _items.Capacity;
+    internal bool HasCapacity() => _items.Count < _items.Capacity;
 
     internal void AddItem(Item item)
     {
