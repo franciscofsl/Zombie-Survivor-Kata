@@ -65,4 +65,15 @@ public class SurvivorTest
             .Throw<ZombieSurvivorException>()
             .WithMessage("Only can perform 3 actions.");
     }
+
+    [Fact]
+    public void Should_Add_In_Hand_Equipment()
+    {
+        var survivor = Survivor.Create("Luffy");
+
+        var equipment = Item.Create("Straw hat");
+        survivor.AddEquipment(equipment);
+
+        survivor.InHandEquipment().Should().Contain(equipment);
+    }
 }

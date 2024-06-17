@@ -3,12 +3,14 @@
 public sealed class Survivor
 {
     private const int MaxWoundsToDie = 2;
+    private const int MaxItemsInHand = 2;
 
     private Survivor(Name name)
     {
         Name = name;
         Wounds = Wounds.Min;
         Actions = Actions.Max;
+        Equipment = Equipment.Default;
     }
 
     public Name Name { get; }
@@ -16,6 +18,8 @@ public sealed class Survivor
     public Wounds Wounds { get; private set; }
 
     public Actions Actions { get; private set; }
+
+    public Equipment Equipment { get; private set; }
 
     public static Survivor Create(Name name)
     {
@@ -38,4 +42,11 @@ public sealed class Survivor
     {
         Actions = Actions.Perform();
     }
+
+    public void AddEquipment(Item item)
+    {
+        Equipment.AddItem(item);
+    }
+
+    public EquipmentCollection InHandEquipment() => Equipment.InHand();
 }
