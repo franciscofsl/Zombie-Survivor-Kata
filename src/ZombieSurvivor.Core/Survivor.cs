@@ -49,4 +49,6 @@ public sealed class Survivor
     }
 
     public EquipmentCollection InHandEquipment() => Equipment.InHand();
+
+    public EquipmentCollection InReserveEquipment() => Equipment.InReserve();
 }
