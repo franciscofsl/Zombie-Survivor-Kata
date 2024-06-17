@@ -76,4 +76,17 @@ public class SurvivorTest
 
         survivor.InHandEquipment().Should().Contain(equipment);
     }
+
+    [Fact]
+    public void Should_Add_In_Reserve_Item_When_In_Hand_Not_Has_Capacity()
+    {
+        var survivor = Survivor.Create("Luffy");
+
+        survivor.AddEquipment(Item.Create("Straw hat"));
+        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
+
+        survivor.InHandEquipment().Should().HaveCount(2);
+        survivor.InReserveEquipment().Should().HaveCount(1);
+    }
 }
