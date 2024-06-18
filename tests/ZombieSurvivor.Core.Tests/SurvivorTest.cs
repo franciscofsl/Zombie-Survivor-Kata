@@ -97,11 +97,29 @@ public class SurvivorTest
 
         survivor.Hurt();
         survivor.Hurt();
-        
+
         FluentActions
             .Invoking(() => survivor.AddEquipment(Item.Create("Mera Mera no mi")))
             .Should()
             .Throw<ZombieSurvivorException>()
             .WithMessage("A dead survivor cannot pick up equipment.");
+    }
+
+    [Fact]
+    public void Should_Reduce_Equipment_If_Survivor_Receive_Wound()
+    {
+        var survivor = Survivor.Create("Luffy");
+
+        survivor.Hurt();
+        survivor.AddEquipment(Item.Create("Straw hat"));
+        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AddEquipment(Item.Create("Hito Hito no mi"));
+
+        FluentActions
+            .Invoking(() => survivor.AddEquipment(Item.Create("Uo Uo no mi")))
+            .Should()
+            .Throw<ZombieSurvivorException>()
+            .WithMessage("Equipment not has capacity");
     }
 }
