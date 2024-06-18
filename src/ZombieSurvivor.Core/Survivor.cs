@@ -3,7 +3,6 @@
 public sealed class Survivor
 {
     private const int MaxWoundsToDie = 2;
-    private const int MaxItemsInHand = 2;
 
     private Survivor(Name name)
     {
