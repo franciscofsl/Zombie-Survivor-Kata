@@ -15,4 +15,9 @@ public class ZombieSurvivorException : Exception
     {
         return new ZombieSurvivorException("Cannot hurt a dead player.");
     }
+
+    public static ZombieSurvivorException CannotAddEquipmentInDieSurvivor()
+    {
+        return new ZombieSurvivorException("A dead survivor cannot pick up equipment.");
+    }
 }
