@@ -28,13 +28,18 @@ public class EquipmentCollection : IEnumerable<Item>
         _items.Add(item);
     }
 
-    internal void ReadjustByCapacity()
+    internal void RemoveLastIfFull()
     {
         if (HasCapacity())
         {
             return;
         }
 
+        RemoveLast();
+    }
+
+    private void RemoveLast()
+    {
         var lastItem = _items.Last();
         _items.Remove(lastItem);
     }

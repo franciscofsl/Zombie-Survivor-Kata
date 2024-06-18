@@ -32,6 +32,6 @@ public sealed class Equipment
 
     internal void Readjust()
     {
-        _inReserve.ReadjustByCapacity();
+        _inReserve.RemoveLastIfFull();
     }
 }
