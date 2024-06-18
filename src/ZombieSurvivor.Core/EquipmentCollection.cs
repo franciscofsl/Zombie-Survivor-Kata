@@ -27,4 +27,15 @@ public class EquipmentCollection : IEnumerable<Item>
     {
         _items.Add(item);
     }
+
+    internal void ReadjustByCapacity()
+    {
+        if (HasCapacity())
+        {
+            return;
+        }
+
+        var lastItem = _items.Last();
+        _items.Remove(lastItem);
+    }
 }

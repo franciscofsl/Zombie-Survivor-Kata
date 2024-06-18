@@ -33,6 +33,7 @@ public sealed class Survivor
         }
 
         Wounds = Wounds.AddWound();
+        Equipment.Readjust();
     }
 
     public bool IsDie() => Wounds == MaxWoundsToDie;

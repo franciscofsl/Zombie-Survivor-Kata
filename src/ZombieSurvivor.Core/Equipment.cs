@@ -29,4 +29,9 @@ public sealed class Equipment
     internal EquipmentCollection InHand() => _inHand;
 
     internal EquipmentCollection InReserve() => _inReserve;
+
+    internal void Readjust()
+    {
+        _inReserve.ReadjustByCapacity();
+    }
 }
