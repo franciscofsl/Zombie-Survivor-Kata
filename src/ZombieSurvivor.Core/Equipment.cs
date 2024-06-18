@@ -3,14 +3,14 @@
 public sealed class Equipment
 {
     private const int MaxItemsInHand = 2;
-    private const int MaxItemsInReserve = 3;
+    private const int InitialMaxItemsInReserve = 3;
     private readonly EquipmentCollection _inHand;
     private readonly EquipmentCollection _inReserve;
 
     private Equipment()
     {
         _inHand = new EquipmentCollection(MaxItemsInHand);
-        _inReserve = new EquipmentCollection(MaxItemsInReserve);
+        _inReserve = new EquipmentCollection(InitialMaxItemsInReserve);
     }
 
     public static Equipment Default => new();

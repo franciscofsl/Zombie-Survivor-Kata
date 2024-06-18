@@ -6,9 +6,9 @@ public class EquipmentCollection : IEnumerable<Item>
 {
     private readonly List<Item> _items;
 
-    internal EquipmentCollection(int maxItems)
+    internal EquipmentCollection(int initialCapacity)
     {
-        _items = new List<Item>(maxItems);
+        _items = new List<Item>(initialCapacity);
     }
 
     public IEnumerator<Item> GetEnumerator()
