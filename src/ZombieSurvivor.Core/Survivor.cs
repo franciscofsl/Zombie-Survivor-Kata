@@ -45,6 +45,11 @@ public sealed class Survivor
 
     public void AddEquipment(Item item)
     {
+        if (IsDie())
+        {
+            throw ZombieSurvivorException.CannotAddEquipmentInDieSurvivor();
+        }
+        
         Equipment.AddItem(item);
     }
 
