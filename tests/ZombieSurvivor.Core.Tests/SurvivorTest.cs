@@ -120,7 +120,7 @@ public class SurvivorTest
             .Invoking(() => survivor.AddEquipment(Item.Create("Uo Uo no mi")))
             .Should()
             .Throw<ZombieSurvivorException>()
-            .WithMessage("Equipment not has capacity");
+            .WithMessage("Equipment not has capacity.");
     }
 
     [Fact]

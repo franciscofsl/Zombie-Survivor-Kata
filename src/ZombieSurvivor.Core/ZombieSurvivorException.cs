@@ -20,4 +20,9 @@ public class ZombieSurvivorException : Exception
     {
         return new ZombieSurvivorException("A dead survivor cannot pick up equipment.");
     }
+
+    public static ZombieSurvivorException EquipmentNotHasCapacity()
+    {
+        return new ZombieSurvivorException("Equipment not has capacity.");
+    }
 }
