@@ -89,4 +89,19 @@ public class SurvivorTest
         survivor.InHandEquipment().Should().HaveCount(2);
         survivor.InReserveEquipment().Should().HaveCount(1);
     }
+
+    [Fact]
+    public void Should_Not_Add_Equipment_To_Survivor_If_Is_Die()
+    {
+        var survivor = Survivor.Create("Ace");
+
+        survivor.Hurt();
+        survivor.Hurt();
+        
+        FluentActions
+            .Invoking(() => survivor.AddEquipment(Item.Create("Mera Mera no mi")))
+            .Should()
+            .Throw<ZombieSurvivorException>()
+            .WithMessage("A dead survivor cannot pick up equipment.");
+    }
 }
