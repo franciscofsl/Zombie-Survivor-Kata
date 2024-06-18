@@ -122,4 +122,23 @@ public class SurvivorTest
             .Throw<ZombieSurvivorException>()
             .WithMessage("Equipment not has capacity");
     }
+
+    [Fact]
+    public void Should_Remove_Last_Equipment_If_Survivor_Has_Full_Equipment_And_Receive_Wound()
+    {
+        var survivor = Survivor.Create("Luffy");
+
+        var lastItem = Item.Create("Uo Uo no mi");
+        survivor.AddEquipment(Item.Create("Straw hat"));
+        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AddEquipment(Item.Create("Hito Hito no mi"));
+        survivor.AddEquipment(Item.Create("Uo Uo no mi"));
+        survivor.Hurt();
+
+        survivor.InHandEquipment().Should().HaveCount(2);
+        survivor.InReserveEquipment().Should()
+            .HaveCount(2).And
+            .NotContain(_ => _ == lastItem);
+    }
 }
