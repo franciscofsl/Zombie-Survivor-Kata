@@ -21,4 +21,18 @@ public class GameTest
 
         game.NumberOfSurvivors().Should().Be(1);
     }
+
+    [Fact]
+    public void Should_Not_Add_Survivor_To_Game_With_Duplicated_Name()
+    {
+        var game = Game.Start();
+
+        Name survivorName = "Luffy";
+        game.AddSurvivor(survivorName);
+
+        FluentActions.Invoking(() => game.AddSurvivor(survivorName))
+            .Should()
+            .Throw<ZombieSurvivorException>()
+            .WithMessage($"There is already a survivor with the name '{survivorName}' in the game.");
+    }
 }
