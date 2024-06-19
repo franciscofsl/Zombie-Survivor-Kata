@@ -25,4 +25,9 @@ public class ZombieSurvivorException : Exception
     {
         return new ZombieSurvivorException("Equipment not has capacity.");
     }
+
+    public static Exception DuplicatedSurvivorByName(Name name)
+    {
+        return new ZombieSurvivorException($"There is already a survivor with the name '{name}' in the game.");
+    }
 }
