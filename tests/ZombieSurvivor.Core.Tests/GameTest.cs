@@ -17,7 +17,7 @@ public class GameTest
     {
         var game = Game.Start();
 
-        game.AddSurvivor("Ace");
+        game.AddSurvivor(Survivor.Create("Ace"));
 
         game.NumberOfSurvivors().Should().Be(1);
     }
@@ -27,12 +27,29 @@ public class GameTest
     {
         var game = Game.Start();
 
-        Name survivorName = "Luffy";
-        game.AddSurvivor(survivorName);
+        var survivor = Survivor.Create("Luffy");
+        game.AddSurvivor(survivor);
 
-        FluentActions.Invoking(() => game.AddSurvivor(survivorName))
+        FluentActions.Invoking(() => game.AddSurvivor(survivor))
             .Should()
             .Throw<ZombieSurvivorException>()
-            .WithMessage($"There is already a survivor with the name '{survivorName}' in the game.");
+            .WithMessage($"There is already a survivor with the name '{survivor.Name}' in the game.");
+    }
+
+    [Fact]
+    public void Game_Should_End_When_All_Survivors_Are_Dead()
+    {
+        var survivor1 = Survivor.Create("Jimbe");
+        var survivor2 = Survivor.Create("Brook");
+        var game = Game.Start();
+        game.AddSurvivor(survivor1);
+        game.AddSurvivor(survivor2);
+
+        survivor1.Hurt();
+        survivor1.Hurt();
+        survivor2.Hurt();
+        survivor2.Hurt();
+
+        game.IsEnded().Should().BeTrue();
     }
 }
