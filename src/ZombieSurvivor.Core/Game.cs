@@ -14,8 +14,5 @@ public class Game
         return new Game();
     }
 
-    public int NumberOfSurvivors()
-    {
-        throw new NotImplementedException();
-    }
+    public int NumberOfSurvivors() => _survivors.Count();
 }
