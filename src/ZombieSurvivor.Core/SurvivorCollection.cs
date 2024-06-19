@@ -15,4 +15,9 @@ public class SurvivorCollection : IEnumerable<Survivor>
     public IEnumerator<Survivor> GetEnumerator() => _survivors.GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+    internal void Add(Name name)
+    {
+        _survivors.Add(Survivor.Create(name));
+    }
 }
