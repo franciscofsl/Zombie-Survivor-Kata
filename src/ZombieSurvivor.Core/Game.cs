@@ -2,9 +2,11 @@
 
 public class Game
 {
+    private readonly SurvivorCollection _survivors;
+
     private Game()
     {
-        
+        _survivors = SurvivorCollection.Empty;
     }
 
     public static Game Start()
