@@ -35,4 +35,9 @@ public class SurvivorCollection : IEnumerable<Survivor>
     {
         return _survivors.Any(_ => _.Name.Equals(survivor.Name));
     }
+
+    public bool AllAreDead()
+    {
+        return _survivors.All(_ => _.IsDie());
+    }
 }

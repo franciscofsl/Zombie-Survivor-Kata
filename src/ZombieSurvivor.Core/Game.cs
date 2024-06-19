@@ -21,8 +21,5 @@ public class Game
         _survivors.Add(survivor);
     }
 
-    public bool IsEnded()
-    {
-        throw new NotImplementedException();
-    }
+    public bool IsEnded() => _survivors.AllAreDead();
 }
