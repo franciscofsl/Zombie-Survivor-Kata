@@ -17,22 +17,22 @@ public class SurvivorCollection : IEnumerable<Survivor>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    internal void Add(Name name)
+    internal void Add(Survivor survivor)
     {
-        EnsureNameIsUnique(name);
-        _survivors.Add(Survivor.Create(name));
+        EnsureNameIsUnique(survivor);
+        _survivors.Add(survivor);
     }
 
-    private void EnsureNameIsUnique(Name name)
+    private void EnsureNameIsUnique(Survivor survivor)
     {
-        if (NameIsDuplicated(name))
+        if (NameIsDuplicated(survivor))
         {
-            throw ZombieSurvivorException.DuplicatedSurvivorByName(name);
+            throw ZombieSurvivorException.DuplicatedSurvivorByName(survivor.Name);
         }
     }
 
-    private bool NameIsDuplicated(Name name)
+    private bool NameIsDuplicated(Survivor survivor)
     {
-        return _survivors.Any(_ => _.Name.Equals(name));
+        return _survivors.Any(_ => _.Name.Equals(survivor.Name));
     }
 }

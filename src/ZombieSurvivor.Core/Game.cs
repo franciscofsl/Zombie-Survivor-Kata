@@ -16,8 +16,8 @@ public class Game
 
     public int NumberOfSurvivors() => _survivors.Count();
 
-    public void AddSurvivor(Name name)
+    public void AddSurvivor(Survivor survivor)
     {
-        _survivors.Add(name);
+        _survivors.Add(survivor);
     }
 }
