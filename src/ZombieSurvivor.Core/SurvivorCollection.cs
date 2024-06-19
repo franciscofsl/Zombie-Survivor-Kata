@@ -19,6 +19,20 @@ public class SurvivorCollection : IEnumerable<Survivor>
 
     internal void Add(Name name)
     {
+        EnsureNameIsUnique(name);
         _survivors.Add(Survivor.Create(name));
+    }
+
+    private void EnsureNameIsUnique(Name name)
+    {
+        if (NameIsDuplicated(name))
+        {
+            throw ZombieSurvivorException.DuplicatedSurvivorByName(name);
+        }
+    }
+
+    private bool NameIsDuplicated(Name name)
+    {
+        return _survivors.Any(_ => _.Name.Equals(name));
     }
 }
