@@ -157,4 +157,15 @@ public class SurvivorTest
 
         survivor.CurrentLevel().Should().Be(Level.Blue);
     }
+
+    [Fact]
+    public void Survivor_Should_Gain_1_Experience_When_Kill_Zombie()
+    {
+        var survivor = Survivor.Create("Buggy");
+        var zombi = Zombi.Create();
+
+        survivor.Kill(zombi);
+
+        survivor.Experience.Should().Be(2);
+    }
 }
