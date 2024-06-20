@@ -2,14 +2,25 @@
 
 public sealed class Experience
 {
+    private const int MinValue = 0;
     private readonly int _value;
 
-    private Experience()
+    private Experience(int amount)
     {
-        _value = 0;
+        if (amount < MinValue)
+        {
+            throw ZombieSurvivorException.MinExperienceIs0();
+        }
+
+        _value = amount;
     }
 
-    public static Experience Min => new();
+    public static Experience Min => new(MinValue);
+
+    internal static Experience Of(int value)
+    {
+        return new Experience(value);
+    }
 
     public override bool Equals(object? obj)
     {

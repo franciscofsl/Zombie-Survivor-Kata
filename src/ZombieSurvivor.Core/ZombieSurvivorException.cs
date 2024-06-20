@@ -30,4 +30,9 @@ public class ZombieSurvivorException : Exception
     {
         return new ZombieSurvivorException($"There is already a survivor with the name '{name}' in the game.");
     }
+
+    public static Exception MinExperienceIs0()
+    {
+        return new ZombieSurvivorException("Minimum experience is 0.");
+    }
 }
