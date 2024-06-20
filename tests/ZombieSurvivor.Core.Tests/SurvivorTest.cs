@@ -149,4 +149,12 @@ public class SurvivorTest
 
         survivor.Experience.Should().Be(0);
     }
+
+    [Fact]
+    public void Survivor_Initial_Level_Should_Be_Blue()
+    {
+        var survivor = Survivor.Create("Teach");
+
+        survivor.CurrentLevel().Should().Be(Level.Blue);
+    }
 }
