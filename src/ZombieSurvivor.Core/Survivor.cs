@@ -21,7 +21,7 @@ public sealed class Survivor
 
     public Equipment Equipment { get; private set; }
 
-    public Experience Experience { get; }
+    public Experience Experience { get; private set; }
 
     public static Survivor Create(Name name)
     {
@@ -63,5 +63,10 @@ public sealed class Survivor
     public Level CurrentLevel()
     {
         return Level.Blue;
+    }
+
+    public void Kill(IEnemy enemy)
+    {
+        Experience += enemy.ExperienceAtDie();
     }
 }

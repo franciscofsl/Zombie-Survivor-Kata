@@ -33,4 +33,8 @@ public sealed class Experience
     }
 
     public override int GetHashCode() => _value;
+
+    public static implicit operator int(Experience experience) => experience._value;
+
+    public static explicit operator Experience(int value) => new(value);
 }

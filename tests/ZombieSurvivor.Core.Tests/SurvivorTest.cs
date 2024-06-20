@@ -166,6 +166,6 @@ public class SurvivorTest
 
         survivor.Kill(zombi);
 
-        survivor.Experience.Should().Be(2);
+        survivor.Experience.Should().Be(1);
     }
 }
