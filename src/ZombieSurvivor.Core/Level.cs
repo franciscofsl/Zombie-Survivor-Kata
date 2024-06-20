@@ -2,5 +2,8 @@
 
 public enum Level
 {
-    Blue
+    Blue,
+    Yellow,
+    Orange,
+    Red
 }
