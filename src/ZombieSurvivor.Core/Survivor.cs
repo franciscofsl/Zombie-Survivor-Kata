@@ -10,6 +10,7 @@ public sealed class Survivor
         Wounds = Wounds.Min;
         Actions = Actions.Max;
         Equipment = Equipment.Default;
+        Experience = Experience.Min;
     }
 
     public Name Name { get; }
@@ -19,6 +20,8 @@ public sealed class Survivor
     public Actions Actions { get; private set; }
 
     public Equipment Equipment { get; private set; }
+
+    public Experience Experience { get; }
 
     public static Survivor Create(Name name)
     {
@@ -49,7 +52,7 @@ public sealed class Survivor
         {
             throw ZombieSurvivorException.CannotAddEquipmentInDieSurvivor();
         }
-        
+
         Equipment.AddItem(item);
     }
 
