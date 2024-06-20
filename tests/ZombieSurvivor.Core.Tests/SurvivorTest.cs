@@ -173,15 +173,9 @@ public class SurvivorTest
     public void Survivor_Should_Be_Yellow_Level_When_Experience_Exceeds_6()
     {
         var survivor = Survivor.Create("Buggy");
-        var zombi = Zombi.Create();
 
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
-        survivor.Kill(zombi);
+        var enemies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        survivor.Kill(enemies);
 
         survivor.CurrentLevel().Should().Be(Level.Yellow);
     }

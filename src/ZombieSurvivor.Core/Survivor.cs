@@ -70,8 +70,11 @@ public sealed class Survivor
         return Level.Blue;
     }
 
-    public void Kill(IEnemy enemy)
+    public void Kill(params IEnemy[] enemies)
     {
-        Experience += enemy.ExperienceAtDie();
+        foreach (var enemy in enemies)
+        {
+            Experience += enemy.ExperienceAtDie();
+        }
     }
 }
