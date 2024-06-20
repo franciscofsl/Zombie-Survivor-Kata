@@ -141,4 +141,12 @@ public class SurvivorTest
             .HaveCount(2).And
             .NotContain(_ => _ == lastItem);
     }
+
+    [Fact]
+    public void Survivor_Should_Start_With_0_Experience()
+    {
+        var survivor = Survivor.Create("Shanks");
+
+        survivor.Experience.Should().Be(0);
+    }
 }
