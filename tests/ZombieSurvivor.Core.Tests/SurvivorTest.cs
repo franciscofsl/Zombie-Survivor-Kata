@@ -190,4 +190,15 @@ public class SurvivorTest
 
         survivor.CurrentLevel().Should().Be(Level.Orange);
     }
+
+    [Fact]
+    public void Survivor_Should_Be_Red_Level_When_Experience_Exceeds_42()
+    {
+        var survivor = Survivor.Create("Buggy");
+
+        var enemies = Enumerable.Range(0, 43).Select(_ => Zombi.Create()).ToArray();
+        survivor.Kill(enemies);
+
+        survivor.CurrentLevel().Should().Be(Level.Red);
+    }
 }
