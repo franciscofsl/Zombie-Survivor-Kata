@@ -62,6 +62,11 @@ public sealed class Survivor
 
     public Level CurrentLevel()
     {
+        if (Experience > 18)
+        {
+            return Level.Orange;
+        }
+
         if (Experience > 6)
         {
             return Level.Yellow;
