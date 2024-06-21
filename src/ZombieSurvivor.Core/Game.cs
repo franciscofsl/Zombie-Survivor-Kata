@@ -22,4 +22,9 @@ public class Game
     }
 
     public bool IsEnded() => _survivors.AllAreDead();
+
+    public Level CurrentLevel()
+    {
+        return Level.Blue;
+    }
 }
