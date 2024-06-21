@@ -25,6 +25,6 @@ public class Game
 
     public Level CurrentLevel()
     {
-        return Level.Blue;
+        return _survivors.MaxLevel();
     }
 }

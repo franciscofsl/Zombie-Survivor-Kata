@@ -40,4 +40,11 @@ public class SurvivorCollection : IEnumerable<Survivor>
     {
         return _survivors.All(_ => _.IsDie());
     }
+
+    internal Level MaxLevel()
+    {
+        var level = _survivors.MaxBy(_ => _.CurrentLevel());
+
+        return level?.CurrentLevel() ?? Level.Blue;
+    }
 }
