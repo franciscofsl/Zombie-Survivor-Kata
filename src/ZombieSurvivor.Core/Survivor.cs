@@ -1,4 +1,5 @@
-﻿using ZombieSurvivor.Core.Exceptions;
+﻿using ZombieSurvivor.Core.Enemies;
+using ZombieSurvivor.Core.Exceptions;
 
 namespace ZombieSurvivor.Core;
 

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using ZombieSurvivor.Core.Enemies;
 
 namespace ZombieSurvivor.Core.Tests;
 

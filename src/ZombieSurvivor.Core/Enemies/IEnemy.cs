@@ -1,4 +1,4 @@
-﻿namespace ZombieSurvivor.Core;
+﻿namespace ZombieSurvivor.Core.Enemies;
 
 public interface IEnemy
 {
