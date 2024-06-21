@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using ZombieSurvivor.Core.Exceptions;
 
 namespace ZombieSurvivor.Core;
 

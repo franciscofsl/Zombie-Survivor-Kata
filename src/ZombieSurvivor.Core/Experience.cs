@@ -1,4 +1,6 @@
-﻿namespace ZombieSurvivor.Core;
+﻿using ZombieSurvivor.Core.Exceptions;
+
+namespace ZombieSurvivor.Core;
 
 public sealed class Experience
 {
