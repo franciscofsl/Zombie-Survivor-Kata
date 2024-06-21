@@ -23,6 +23,18 @@ public class SurvivorCollection : IEnumerable<Survivor>
         _survivors.Add(survivor);
     }
 
+    internal bool AllAreDead()
+    {
+        return _survivors.All(_ => _.IsDie());
+    }
+
+    internal Level MaxLevel()
+    {
+        var level = _survivors.MaxBy(_ => _.CurrentLevel());
+
+        return level?.CurrentLevel() ?? Level.Blue;
+    }
+
     private void EnsureNameIsUnique(Survivor survivor)
     {
         if (NameIsDuplicated(survivor))
@@ -34,17 +46,5 @@ public class SurvivorCollection : IEnumerable<Survivor>
     private bool NameIsDuplicated(Survivor survivor)
     {
         return _survivors.Any(_ => _.Name.Equals(survivor.Name));
-    }
-
-    public bool AllAreDead()
-    {
-        return _survivors.All(_ => _.IsDie());
-    }
-
-    internal Level MaxLevel()
-    {
-        var level = _survivors.MaxBy(_ => _.CurrentLevel());
-
-        return level?.CurrentLevel() ?? Level.Blue;
     }
 }
