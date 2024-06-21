@@ -60,4 +60,17 @@ public class GameTest
 
         game.CurrentLevel().Should().Be(Level.Blue);
     }
+
+    [Fact]
+    public void Game_Level_Should_Be_Equal_Than_High_Survivor_Level()
+    {
+        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var survivor = Survivor.Create("Jimbe");
+        var game = Game.Start();
+        game.AddSurvivor(survivor);
+
+        survivor.Kill(zombies);
+
+        game.CurrentLevel().Should().Be(Level.Yellow);
+    }
 }
