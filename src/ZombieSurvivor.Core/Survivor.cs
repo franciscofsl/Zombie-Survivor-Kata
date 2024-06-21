@@ -62,22 +62,13 @@ public sealed class Survivor
 
     public Level CurrentLevel()
     {
-        if (Experience > 42)
+        return (int)Experience switch
         {
-            return Level.Red;
-        }
-
-        if (Experience > 18)
-        {
-            return Level.Orange;
-        }
-
-        if (Experience > 6)
-        {
-            return Level.Yellow;
-        }
-
-        return Level.Blue;
+            > 42 => Level.Red,
+            > 18 => Level.Orange,
+            > 6 => Level.Yellow,
+            _ => Level.Blue
+        };
     }
 
     public void Kill(params IEnemy[] enemies)
