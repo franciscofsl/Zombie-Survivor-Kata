@@ -52,4 +52,12 @@ public class GameTest
 
         game.IsEnded().Should().BeTrue();
     }
+
+    [Fact]
+    public void Game_Should_Start_In_Blue_Level()
+    {
+        var game = Game.Start();
+
+        game.CurrentLevel().Should().Be(Level.Blue);
+    }
 }
