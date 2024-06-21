@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Exceptions;
+using ZombieSurvivor.Core.Survivors;
 
 namespace ZombieSurvivor.Core.Tests;
 

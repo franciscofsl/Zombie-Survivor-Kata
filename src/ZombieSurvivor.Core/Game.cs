@@ -1,4 +1,7 @@
-﻿namespace ZombieSurvivor.Core;
+﻿using ZombieSurvivor.Core.Common;
+using ZombieSurvivor.Core.Survivors;
+
+namespace ZombieSurvivor.Core;
 
 public class Game
 {

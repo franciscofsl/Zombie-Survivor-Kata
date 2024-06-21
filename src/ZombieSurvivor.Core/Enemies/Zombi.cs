@@ -1,4 +1,6 @@
-﻿namespace ZombieSurvivor.Core.Enemies;
+﻿using ZombieSurvivor.Core.Survivors;
+
+namespace ZombieSurvivor.Core.Enemies;
 
 public class Zombi : IEnemy
 {

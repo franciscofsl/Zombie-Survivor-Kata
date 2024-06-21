@@ -1,7 +1,8 @@
-﻿using ZombieSurvivor.Core.Enemies;
+﻿using ZombieSurvivor.Core.Common;
+using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Exceptions;
 
-namespace ZombieSurvivor.Core;
+namespace ZombieSurvivor.Core.Survivors;
 
 public sealed class Survivor
 {

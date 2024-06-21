@@ -1,4 +1,4 @@
-﻿namespace ZombieSurvivor.Core;
+﻿namespace ZombieSurvivor.Core.Survivors;
 
 public class Item
 {

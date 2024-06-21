@@ -1,4 +1,6 @@
-﻿namespace ZombieSurvivor.Core.Exceptions;
+﻿using ZombieSurvivor.Core.Survivors;
+
+namespace ZombieSurvivor.Core.Exceptions;
 
 public class ZombieSurvivorException : Exception
 {

@@ -1,6 +1,6 @@
 ﻿using ZombieSurvivor.Core.Exceptions;
 
-namespace ZombieSurvivor.Core;
+namespace ZombieSurvivor.Core.Survivors;
 
 public sealed class Actions
 {
