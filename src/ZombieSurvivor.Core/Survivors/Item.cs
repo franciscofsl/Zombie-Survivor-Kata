@@ -1,4 +1,6 @@
-﻿namespace ZombieSurvivor.Core.Survivors;
+﻿using ZombieSurvivor.Core.Survivors.ValueObjects;
+
+namespace ZombieSurvivor.Core.Survivors;
 
 public class Item
 {

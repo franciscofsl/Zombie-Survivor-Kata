@@ -1,6 +1,7 @@
 ﻿using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Exceptions;
+using ZombieSurvivor.Core.Survivors.ValueObjects;
 
 namespace ZombieSurvivor.Core.Survivors;
 

@@ -1,6 +1,6 @@
 ﻿using ZombieSurvivor.Core.Exceptions;
 
-namespace ZombieSurvivor.Core.Survivors;
+namespace ZombieSurvivor.Core.Survivors.ValueObjects;
 
 public sealed class Experience
 {
