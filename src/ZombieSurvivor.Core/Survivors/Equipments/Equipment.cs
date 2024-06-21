@@ -1,4 +1,4 @@
-﻿namespace ZombieSurvivor.Core.Survivors;
+﻿namespace ZombieSurvivor.Core.Survivors.Equipments;
 
 public sealed class Equipment
 {

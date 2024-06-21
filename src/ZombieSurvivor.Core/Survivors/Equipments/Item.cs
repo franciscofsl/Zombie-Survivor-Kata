@@ -1,6 +1,6 @@
 ﻿using ZombieSurvivor.Core.Survivors.ValueObjects;
 
-namespace ZombieSurvivor.Core.Survivors;
+namespace ZombieSurvivor.Core.Survivors.Equipments;
 
 public class Item
 {

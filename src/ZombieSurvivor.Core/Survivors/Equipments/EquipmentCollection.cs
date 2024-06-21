@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using ZombieSurvivor.Core.Exceptions;
 
-namespace ZombieSurvivor.Core.Survivors;
+namespace ZombieSurvivor.Core.Survivors.Equipments;
 
 public class EquipmentCollection : IEnumerable<Item>
 {

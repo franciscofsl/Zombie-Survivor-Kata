@@ -3,6 +3,7 @@ using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Exceptions;
 using ZombieSurvivor.Core.Survivors;
+using ZombieSurvivor.Core.Survivors.Equipments;
 
 namespace ZombieSurvivor.Core.Tests;
 
