@@ -122,4 +122,17 @@ public class GameTest
 
         game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorIsWounded));
     }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Survivor_Is_Die()
+    {
+        var game = Game.Start();
+        var survivor = Survivor.Create("Ace");
+        game.AddSurvivor(survivor);
+
+        survivor.Hurt();
+        survivor.Hurt();
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorDies));
+    }
 }
