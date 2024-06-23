@@ -19,6 +19,7 @@ public sealed class Survivor
         Actions = Actions.Max;
         Equipment = Equipment.Default;
         Experience = Experience.Min;
+        Skills = SkillTree.Default;
     }
 
     public Name Name { get; }
@@ -30,6 +31,8 @@ public sealed class Survivor
     public Equipment Equipment { get; private set; }
 
     public Experience Experience { get; private set; }
+
+    public SkillTree Skills { get; }
 
     internal EventHandler<Event> EventOccurred;
 
@@ -114,10 +117,7 @@ public sealed class Survivor
         }
     }
 
-    public IReadOnlyList<Skill> UnlockedSkills()
-    {
-        return Enumerable.Empty<Skill>().ToList();
-    }
+    public IReadOnlyList<Skill> UnlockedSkills() => Skills.UnlockedSkills();
 
     public IReadOnlyList<Skill> PotentialSkills()
     {
