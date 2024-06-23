@@ -220,7 +220,7 @@ public class SurvivorTest
     {
         var survivor = Survivor.Create("Robin");
 
-        survivor.PotentialSkills().Should().Contain(_ => _.Level == Level.Yellow);
+        survivor.PotentialSkills().Should().Contain(_ => _.Level == Level.Yellow && _.Name == "+1 Action");
     }
 
     [Fact]
