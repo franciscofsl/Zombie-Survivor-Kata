@@ -118,7 +118,7 @@ public class GameTest
         var survivor = Survivor.Create("Luffy");
         game.AddSurvivor(survivor);
 
-        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.Hurt();
 
         game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorIsWounded));
     }

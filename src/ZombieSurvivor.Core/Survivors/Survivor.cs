@@ -46,6 +46,7 @@ public sealed class Survivor
 
         Wounds = Wounds.AddWound();
         Equipment.Readjust();
+        EventOccurred?.Invoke(this, new SurvivorIsWounded(this));
     }
 
     public bool IsDie() => Wounds == MaxWoundsToDie;
