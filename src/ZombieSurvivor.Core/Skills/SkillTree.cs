@@ -6,7 +6,7 @@ public class SkillTree
 {
     private readonly List<Skill> _unlockedSkills;
     private readonly List<Skill> _potentialSkills;
-    internal static SkillTree Default = new();
+    internal static SkillTree Default => new();
 
     private SkillTree()
     {
@@ -23,5 +23,12 @@ public class SkillTree
     }
 
     internal IReadOnlyList<Skill> UnlockedSkills() => _unlockedSkills.AsReadOnly();
+
     internal IReadOnlyList<Skill> PotentialSkills() => _potentialSkills.AsReadOnly();
+
+    internal void UnlockByLevel(Level level)
+    {
+        var skill = _potentialSkills.First(_ => _.Level == level);
+        _unlockedSkills.Add(skill);
+    }
 }

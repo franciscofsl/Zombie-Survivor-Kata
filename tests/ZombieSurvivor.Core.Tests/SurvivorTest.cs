@@ -246,6 +246,6 @@ public class SurvivorTest
         var enemies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
         survivor.Kill(enemies);
 
-        survivor.UnlockedSkills().Where(_ => _.Level == Level.Yellow && _.Name == "+1 Action").Should().HaveCount(1);
+        survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Yellow, Name: "+1 Action" }).Should().HaveCount(1);
     }
 }

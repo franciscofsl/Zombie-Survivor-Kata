@@ -98,9 +98,10 @@ public sealed class Survivor
             var previousLevel = CurrentLevel();
             Experience += enemy.ExperienceAtDie();
             NotifyIfLevelUp(previousLevel);
+            UnlockSkillIfLevelUp(previousLevel);
         }
     }
-    
+
     public IReadOnlyList<Skill> UnlockedSkills() => Skills.UnlockedSkills();
 
     public IReadOnlyList<Skill> PotentialSkills() => Skills.PotentialSkills();
@@ -118,6 +119,14 @@ public sealed class Survivor
         if (IsDie())
         {
             OnDies?.Invoke(this, new SurvivorDies(this));
+        }
+    }
+
+    private void UnlockSkillIfLevelUp(Level previousLevel)
+    {
+        if (previousLevel != CurrentLevel())
+        {
+            Skills.UnlockByLevel(CurrentLevel());
         }
     }
 }
