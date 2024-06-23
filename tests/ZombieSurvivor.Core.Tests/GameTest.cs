@@ -161,4 +161,17 @@ public class GameTest
 
         game.History.Should().Contain(_ => _.GetType() == typeof(GameLevelUp));
     }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Game_End_If_Last_Survivor_Dies()
+    {
+        var survivor = Survivor.Create("Brook");
+        var game = Game.Start();
+        game.AddSurvivor(survivor);
+
+        survivor.Hurt();
+        survivor.Hurt();
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(GameEnded));
+    }
 }
