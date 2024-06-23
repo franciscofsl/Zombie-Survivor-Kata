@@ -258,4 +258,14 @@ public class SurvivorTest
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Orange }).Should().HaveCount(1);
     }
+
+    [Fact]
+    public void Survivor_Should_Unlock_Red_Skill_When_Level_Up_To_Red()
+    {
+        var survivor = Survivor.Create("Zoro");
+        var enemies = Enumerable.Range(0, 48).Select(_ => Zombi.Create()).ToArray();
+        survivor.Kill(enemies);
+
+        survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Red }).Should().HaveCount(1);
+    }
 }
