@@ -28,6 +28,7 @@ public sealed class Game
     {
         survivor.EventOccurred += NotifyEvent;
         survivor.OnLevelUp += OnSurvivorLevelUp;
+        survivor.OnDies += OnSurvivorDies;
         _survivors.Add(survivor);
         History.RaiseEvent(new SurvivorAdded(survivor));
     }
@@ -44,6 +45,16 @@ public sealed class Game
         if (@event.PreviousLevel != CurrentLevel())
         {
             NotifyEvent(this, new GameLevelUp());
+        }
+
+        NotifyEvent(sender, @event);
+    }
+
+    private void OnSurvivorDies(object? sender, SurvivorDies @event)
+    {
+        if (IsEnded())
+        {
+            NotifyEvent(this, new GameEnded());
         }
 
         NotifyEvent(sender, @event);
