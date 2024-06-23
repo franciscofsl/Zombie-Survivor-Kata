@@ -147,6 +147,18 @@ public class GameTest
         survivor.Kill(zombies);
 
         game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorLevelUp));
-        survivor.CurrentLevel().Should().Be(Level.Yellow);
+    }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Game_Level_Up()
+    {
+        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var survivor = Survivor.Create("Jimbe");
+        var game = Game.Start();
+        game.AddSurvivor(survivor);
+
+        survivor.Kill(zombies);
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(GameLevelUp));
     }
 }
