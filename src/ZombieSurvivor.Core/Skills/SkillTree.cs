@@ -13,7 +13,7 @@ public class SkillTree
         _unlockedSkills = new();
         _potentialSkills = new List<Skill>
         {
-            new Skill("+1 Action", Level.Yellow),
+            new OneMoreActionSkill(),
             new Skill("Skill 2", Level.Orange),
             new Skill("Skill 3", Level.Orange),
             new Skill("Skill 4", Level.Red),
