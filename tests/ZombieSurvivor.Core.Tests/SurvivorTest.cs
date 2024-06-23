@@ -230,4 +230,12 @@ public class SurvivorTest
 
         survivor.PotentialSkills().Where(_ => _.Level == Level.Orange).Should().HaveCount(2);
     }
+
+    [Fact]
+    public void Survivor_Should_Start_With_Three_Potential_Skill_At_Red_Level()
+    {
+        var survivor = Survivor.Create("Robin");
+
+        survivor.PotentialSkills().Where(_ => _.Level == Level.Red).Should().HaveCount(3);
+    }
 }

@@ -125,7 +125,10 @@ public sealed class Survivor
         {
             new Skill("Skill 1", Level.Yellow),
             new Skill("Skill 2", Level.Orange),
-            new Skill("Skill 3", Level.Orange)
+            new Skill("Skill 3", Level.Orange),
+            new Skill("Skill 4", Level.Red),
+            new Skill("Skill 5", Level.Red),
+            new Skill("Skill 6", Level.Red)
         };
     }
 }
