@@ -87,7 +87,17 @@ public sealed class Survivor
     {
         foreach (var enemy in enemies)
         {
+            var previousLevel = CurrentLevel();
             Experience += enemy.ExperienceAtDie();
+            NotifyIfLevelUp(previousLevel);
+        }
+    }
+
+    private void NotifyIfLevelUp(Level previousLevel)
+    {
+        if (previousLevel != CurrentLevel())
+        {
+            EventOccurred?.Invoke(this, new SurvivorLevelUp(this));
         }
     }
 
