@@ -2,6 +2,7 @@
 using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Events;
 using ZombieSurvivor.Core.Exceptions;
+using ZombieSurvivor.Core.Skills;
 using ZombieSurvivor.Core.Survivors.Equipments;
 using ZombieSurvivor.Core.Survivors.ValueObjects;
 
@@ -111,5 +112,10 @@ public sealed class Survivor
         {
             OnDies?.Invoke(this, new SurvivorDies(this));
         }
+    }
+
+    public IReadOnlyList<Skill> UnlockedSkills()
+    {
+        return Enumerable.Empty<Skill>().ToList();
     }
 }
