@@ -27,6 +27,7 @@ public class Game
     public void AddSurvivor(Survivor survivor)
     {
         _survivors.Add(survivor);
+        History.RaiseEvent(new SurvivorAdded(survivor));
     }
 
     public bool IsEnded() => _survivors.AllAreDead();
