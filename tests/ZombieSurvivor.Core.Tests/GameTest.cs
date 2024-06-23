@@ -110,4 +110,16 @@ public class GameTest
 
         game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorAcquireEquipmentItem));
     }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Survivor_Is_Wounded()
+    {
+        var game = Game.Start();
+        var survivor = Survivor.Create("Luffy");
+        game.AddSurvivor(survivor);
+
+        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorIsWounded));
+    }
 }
