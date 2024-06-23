@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
+using ZombieSurvivor.Core.Events;
 using ZombieSurvivor.Core.Exceptions;
 using ZombieSurvivor.Core.Survivors;
 
@@ -76,5 +77,13 @@ public class GameTest
         survivor.Kill(zombies);
 
         game.CurrentLevel().Should().Be(Level.Yellow);
+    }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Game_Began()
+    {
+        var game = Game.Start();
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(GameBegan));
     }
 }
