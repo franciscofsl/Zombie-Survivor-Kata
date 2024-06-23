@@ -268,4 +268,15 @@ public class SurvivorTest
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Red }).Should().HaveCount(1);
     }
+
+    [Fact]
+    public void Survivor_Who_Has_One_More_Action_Should_Have_One_Additional_Action()
+    {
+        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var survivor = Survivor.Create("Sabo");
+
+        survivor.Kill(zombies);
+
+        survivor.Actions.Should().Be(4);
+    }
 }
