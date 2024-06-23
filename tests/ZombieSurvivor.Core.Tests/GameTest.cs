@@ -4,6 +4,7 @@ using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Events;
 using ZombieSurvivor.Core.Exceptions;
 using ZombieSurvivor.Core.Survivors;
+using ZombieSurvivor.Core.Survivors.Equipments;
 
 namespace ZombieSurvivor.Core.Tests;
 
@@ -96,5 +97,17 @@ public class GameTest
         game.AddSurvivor(survivor);
 
         game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorAdded));
+    }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Survivor_Acquires_Piece_Of_Equipment()
+    {
+        var game = Game.Start();
+        var survivor = Survivor.Create("Luffy");
+        game.AddSurvivor(survivor);
+
+        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivalAcquireEquipmentItem));
     }
 }
