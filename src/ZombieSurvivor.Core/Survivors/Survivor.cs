@@ -16,7 +16,7 @@ public sealed class Survivor
     {
         Name = name;
         Wounds = Wounds.Min;
-        Actions = Actions.Max;
+        Actions = Actions.Default;
         Equipment = Equipment.Default;
         Experience = Experience.Min;
         Skills = SkillTree.Default;
@@ -127,6 +127,15 @@ public sealed class Survivor
         if (previousLevel != CurrentLevel())
         {
             Skills.UnlockByLevel(CurrentLevel());
+            IncreaseActionsIfUnlockOneMoreAction();
+        }
+    }
+
+    private void IncreaseActionsIfUnlockOneMoreAction()
+    {
+        if (Skills.UnlockedSkills().Any(_ => _.GetType() == typeof(OneMoreActionSkill)))
+        {
+            Actions = Actions.OneMoreAction();
         }
     }
 }

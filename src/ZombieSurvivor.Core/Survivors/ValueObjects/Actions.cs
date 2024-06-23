@@ -4,6 +4,7 @@ namespace ZombieSurvivor.Core.Survivors.ValueObjects;
 
 public sealed class Actions
 {
+    private int _max = 3;
     private readonly int _value;
 
     private Actions(int value)
@@ -16,7 +17,10 @@ public sealed class Actions
         _value = value;
     }
 
-    public static Actions Max => new(3);
+    internal static Actions Default => new(3)
+    {
+        _max = 3
+    };
 
     public static implicit operator int(Actions actions)
     {
@@ -38,5 +42,13 @@ public sealed class Actions
     public Actions Perform()
     {
         return new Actions(_value - 1);
+    }
+
+    public Actions OneMoreAction()
+    {
+        return new Actions(_max + 1)
+        {
+            _max = _max + 1
+        };
     }
 }
