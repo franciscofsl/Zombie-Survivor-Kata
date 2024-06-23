@@ -248,4 +248,14 @@ public class SurvivorTest
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Yellow, Name: "+1 Action" }).Should().HaveCount(1);
     }
+
+    [Fact]
+    public void Survivor_Should_Unlock_Orange_Skill_When_Level_Up_To_Orange()
+    {
+        var survivor = Survivor.Create("Sanji");
+        var enemies = Enumerable.Range(0, 19).Select(_ => Zombi.Create()).ToArray();
+        survivor.Kill(enemies);
+
+        survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Orange }).Should().HaveCount(1);
+    }
 }
