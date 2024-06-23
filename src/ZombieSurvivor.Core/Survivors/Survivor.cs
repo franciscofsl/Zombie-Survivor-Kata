@@ -100,6 +100,10 @@ public sealed class Survivor
             NotifyIfLevelUp(previousLevel);
         }
     }
+    
+    public IReadOnlyList<Skill> UnlockedSkills() => Skills.UnlockedSkills();
+
+    public IReadOnlyList<Skill> PotentialSkills() => Skills.PotentialSkills();
 
     private void NotifyIfLevelUp(Level previousLevel)
     {
@@ -116,8 +120,4 @@ public sealed class Survivor
             OnDies?.Invoke(this, new SurvivorDies(this));
         }
     }
-
-    public IReadOnlyList<Skill> UnlockedSkills() => Skills.UnlockedSkills();
-
-    public IReadOnlyList<Skill> PotentialSkills() => Skills.PotentialSkills();
 }
