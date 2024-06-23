@@ -28,7 +28,15 @@ public class SkillTree
 
     internal void UnlockByLevel(Level level)
     {
-        var skill = _potentialSkills.First(_ => _.Level == level);
-        _unlockedSkills.Add(skill);
+        var skill = AvailableSkill(level);
+        if (skill is not null)
+        {
+            _unlockedSkills.Add(skill);
+        }
+    }
+
+    private Skill? AvailableSkill(Level level)
+    {
+        return _potentialSkills.FirstOrDefault(_ => _.Level == level);
     }
 }
