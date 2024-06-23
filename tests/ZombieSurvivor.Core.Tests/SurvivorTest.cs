@@ -222,4 +222,12 @@ public class SurvivorTest
 
         survivor.PotentialSkills().Should().Contain(_ => _.Level == Level.Yellow);
     }
+
+    [Fact]
+    public void Survivor_Should_Start_With_Two_Potential_Skill_At_Orange_Level()
+    {
+        var survivor = Survivor.Create("Robin");
+
+        survivor.PotentialSkills().Where(_ => _.Level == Level.Orange).Should().HaveCount(2);
+    }
 }

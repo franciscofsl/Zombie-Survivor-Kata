@@ -123,7 +123,9 @@ public sealed class Survivor
     {
         return new List<Skill>
         {
-            new Skill("Skill 1", Level.Yellow)
+            new Skill("Skill 1", Level.Yellow),
+            new Skill("Skill 2", Level.Orange),
+            new Skill("Skill 3", Level.Orange)
         };
     }
 }
