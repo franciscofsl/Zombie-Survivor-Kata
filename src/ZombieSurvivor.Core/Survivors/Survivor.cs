@@ -119,16 +119,5 @@ public sealed class Survivor
 
     public IReadOnlyList<Skill> UnlockedSkills() => Skills.UnlockedSkills();
 
-    public IReadOnlyList<Skill> PotentialSkills()
-    {
-        return new List<Skill>
-        {
-            new Skill("+1 Action", Level.Yellow),
-            new Skill("Skill 2", Level.Orange),
-            new Skill("Skill 3", Level.Orange),
-            new Skill("Skill 4", Level.Red),
-            new Skill("Skill 5", Level.Red),
-            new Skill("Skill 6", Level.Red)
-        };
-    }
+    public IReadOnlyList<Skill> PotentialSkills() => Skills.PotentialSkills();
 }
