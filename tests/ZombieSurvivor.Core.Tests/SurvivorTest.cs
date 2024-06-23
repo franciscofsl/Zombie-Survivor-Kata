@@ -206,4 +206,12 @@ public class SurvivorTest
 
         survivor.CurrentLevel().Should().Be(Level.Red);
     }
+
+    [Fact]
+    public void Survivor_Should_Have_Without_Unlocked_Skills()
+    {
+        var survivor = Survivor.Create("Garp");
+
+        survivor.UnlockedSkills().Should().BeEmpty();
+    }
 }
