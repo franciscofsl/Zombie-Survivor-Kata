@@ -1,5 +1,6 @@
 ﻿using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
+using ZombieSurvivor.Core.Events;
 using ZombieSurvivor.Core.Exceptions;
 using ZombieSurvivor.Core.Survivors.Equipments;
 using ZombieSurvivor.Core.Survivors.ValueObjects;
@@ -28,6 +29,8 @@ public sealed class Survivor
     public Equipment Equipment { get; private set; }
 
     public Experience Experience { get; private set; }
+
+    internal EventHandler<Event> EventOccurred;
 
     public static Survivor Create(Name name)
     {
@@ -59,6 +62,7 @@ public sealed class Survivor
             throw ZombieSurvivorException.CannotAddEquipmentInDieSurvivor();
         }
 
+        EventOccurred?.Invoke(this, new SurvivorAcquireEquipmentItem(this, item));
         Equipment.AddItem(item);
     }
 

@@ -4,7 +4,7 @@ using ZombieSurvivor.Core.Survivors;
 
 namespace ZombieSurvivor.Core;
 
-public class Game
+public sealed class Game
 {
     private readonly SurvivorCollection _survivors;
 
@@ -26,6 +26,7 @@ public class Game
 
     public void AddSurvivor(Survivor survivor)
     {
+        survivor.EventOccurred += NotifyEvent;
         _survivors.Add(survivor);
         History.RaiseEvent(new SurvivorAdded(survivor));
     }
@@ -35,5 +36,10 @@ public class Game
     public Level CurrentLevel()
     {
         return _survivors.MaxLevel();
+    }
+
+    private void NotifyEvent(object? sender, Event @event)
+    {
+        History.RaiseEvent(@event);
     }
 }
