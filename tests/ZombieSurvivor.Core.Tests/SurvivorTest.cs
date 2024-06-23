@@ -77,7 +77,7 @@ public class SurvivorTest
         var survivor = Survivor.Create("Luffy");
 
         var equipment = Item.Create("Straw hat");
-        survivor.AddEquipment(equipment);
+        survivor.AcquireEquipment(equipment);
 
         survivor.InHandEquipment().Should().Contain(equipment);
     }
@@ -87,9 +87,9 @@ public class SurvivorTest
     {
         var survivor = Survivor.Create("Luffy");
 
-        survivor.AddEquipment(Item.Create("Straw hat"));
-        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
-        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AcquireEquipment(Item.Create("Straw hat"));
+        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AcquireEquipment(Item.Create("Mera Mera no mi"));
 
         survivor.InHandEquipment().Should().HaveCount(2);
         survivor.InReserveEquipment().Should().HaveCount(1);
@@ -104,7 +104,7 @@ public class SurvivorTest
         survivor.Hurt();
 
         FluentActions
-            .Invoking(() => survivor.AddEquipment(Item.Create("Mera Mera no mi")))
+            .Invoking(() => survivor.AcquireEquipment(Item.Create("Mera Mera no mi")))
             .Should()
             .Throw<ZombieSurvivorException>()
             .WithMessage("A dead survivor cannot pick up equipment.");
@@ -116,13 +116,13 @@ public class SurvivorTest
         var survivor = Survivor.Create("Luffy");
 
         survivor.Hurt();
-        survivor.AddEquipment(Item.Create("Straw hat"));
-        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
-        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
-        survivor.AddEquipment(Item.Create("Hito Hito no mi"));
+        survivor.AcquireEquipment(Item.Create("Straw hat"));
+        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AcquireEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AcquireEquipment(Item.Create("Hito Hito no mi"));
 
         FluentActions
-            .Invoking(() => survivor.AddEquipment(Item.Create("Uo Uo no mi")))
+            .Invoking(() => survivor.AcquireEquipment(Item.Create("Uo Uo no mi")))
             .Should()
             .Throw<ZombieSurvivorException>()
             .WithMessage("Equipment not has capacity.");
@@ -134,11 +134,11 @@ public class SurvivorTest
         var survivor = Survivor.Create("Luffy");
 
         var lastItem = Item.Create("Uo Uo no mi");
-        survivor.AddEquipment(Item.Create("Straw hat"));
-        survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
-        survivor.AddEquipment(Item.Create("Mera Mera no mi"));
-        survivor.AddEquipment(Item.Create("Hito Hito no mi"));
-        survivor.AddEquipment(Item.Create("Uo Uo no mi"));
+        survivor.AcquireEquipment(Item.Create("Straw hat"));
+        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AcquireEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AcquireEquipment(Item.Create("Hito Hito no mi"));
+        survivor.AcquireEquipment(Item.Create("Uo Uo no mi"));
         survivor.Hurt();
 
         survivor.InHandEquipment().Should().HaveCount(2);

@@ -52,7 +52,7 @@ public sealed class Survivor
         Actions = Actions.Perform();
     }
 
-    public void AddEquipment(Item item)
+    public void AcquireEquipment(Item item)
     {
         if (IsDie())
         {
