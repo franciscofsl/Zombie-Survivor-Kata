@@ -27,6 +27,7 @@ public sealed class Game
     public void AddSurvivor(Survivor survivor)
     {
         survivor.EventOccurred += NotifyEvent;
+        survivor.OnLevelUp += OnSurvivorLevelUp;
         _survivors.Add(survivor);
         History.RaiseEvent(new SurvivorAdded(survivor));
     }
@@ -36,6 +37,16 @@ public sealed class Game
     public Level CurrentLevel()
     {
         return _survivors.MaxLevel();
+    }
+
+    private void OnSurvivorLevelUp(object? sender, SurvivorLevelUp @event)
+    {
+        if (@event.PreviousLevel != CurrentLevel())
+        {
+            NotifyEvent(this, new GameLevelUp());
+        }
+
+        NotifyEvent(sender, @event);
     }
 
     private void NotifyEvent(object? sender, Event @event)

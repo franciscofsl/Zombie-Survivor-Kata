@@ -31,6 +31,8 @@ public sealed class Survivor
     public Experience Experience { get; private set; }
 
     internal EventHandler<Event> EventOccurred;
+    
+    internal EventHandler<SurvivorLevelUp> OnLevelUp;
 
     public static Survivor Create(Name name)
     {
@@ -97,7 +99,7 @@ public sealed class Survivor
     {
         if (previousLevel != CurrentLevel())
         {
-            EventOccurred?.Invoke(this, new SurvivorLevelUp(this));
+            OnLevelUp?.Invoke(this, new SurvivorLevelUp(this, previousLevel, CurrentLevel()));
         }
     }
 
