@@ -108,6 +108,6 @@ public class GameTest
 
         survivor.AddEquipment(Item.Create("Gomu Gomu no mi"));
 
-        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivalAcquireEquipmentItem));
+        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorAcquireEquipmentItem));
     }
 }
