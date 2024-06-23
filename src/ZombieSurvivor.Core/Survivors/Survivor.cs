@@ -31,8 +31,10 @@ public sealed class Survivor
     public Experience Experience { get; private set; }
 
     internal EventHandler<Event> EventOccurred;
-    
+
     internal EventHandler<SurvivorLevelUp> OnLevelUp;
+
+    internal EventHandler<SurvivorDies> OnDies;
 
     public static Survivor Create(Name name)
     {
@@ -107,7 +109,7 @@ public sealed class Survivor
     {
         if (IsDie())
         {
-            EventOccurred?.Invoke(this, new SurvivorDies(this));
+            OnDies?.Invoke(this, new SurvivorDies(this));
         }
     }
 }
