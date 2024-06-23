@@ -86,4 +86,15 @@ public class GameTest
 
         game.History.Should().Contain(_ => _.GetType() == typeof(GameBegan));
     }
+
+    [Fact]
+    public void Game_History_Should_Record_When_Survivor_Has_Been_Added_To_Game()
+    {
+        var game = Game.Start();
+        var survivor = Survivor.Create("Luffy");
+
+        game.AddSurvivor(survivor);
+
+        game.History.Should().Contain(_ => _.GetType() == typeof(SurvivorAdded));
+    }
 }
