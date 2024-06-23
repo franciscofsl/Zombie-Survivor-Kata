@@ -238,4 +238,14 @@ public class SurvivorTest
 
         survivor.PotentialSkills().Where(_ => _.Level == Level.Red).Should().HaveCount(3);
     }
+
+    [Fact]
+    public void Survivor_Should_Unlock_Plus_1_Action_When_Level_Up_To_Yellow()
+    {
+        var survivor = Survivor.Create("Sanji");
+        var enemies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        survivor.Kill(enemies);
+
+        survivor.UnlockedSkills().Where(_ => _.Level == Level.Yellow && _.Name == "+1 Action").Should().HaveCount(1);
+    }
 }
