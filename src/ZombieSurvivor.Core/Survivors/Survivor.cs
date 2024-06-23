@@ -47,6 +47,7 @@ public sealed class Survivor
         Wounds = Wounds.AddWound();
         Equipment.Readjust();
         EventOccurred?.Invoke(this, new SurvivorIsWounded(this));
+        NotifyIfIsDie();
     }
 
     public bool IsDie() => Wounds == MaxWoundsToDie;
@@ -87,6 +88,14 @@ public sealed class Survivor
         foreach (var enemy in enemies)
         {
             Experience += enemy.ExperienceAtDie();
+        }
+    }
+
+    private void NotifyIfIsDie()
+    {
+        if (IsDie())
+        {
+            EventOccurred?.Invoke(this, new SurvivorDies(this));
         }
     }
 }
