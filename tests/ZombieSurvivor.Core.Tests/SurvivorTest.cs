@@ -214,4 +214,12 @@ public class SurvivorTest
 
         survivor.UnlockedSkills().Should().BeEmpty();
     }
+
+    [Fact]
+    public void Survivor_Should_Start_With_One_Potential_Skill_At_Yellow_Level()
+    {
+        var survivor = Survivor.Create("Robin");
+
+        survivor.PotentialSkills().Should().Contain(_ => _.Level == Level.Yellow);
+    }
 }

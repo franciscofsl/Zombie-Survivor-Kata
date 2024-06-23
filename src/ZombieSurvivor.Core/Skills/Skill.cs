@@ -1,3 +1,5 @@
-﻿namespace ZombieSurvivor.Core.Skills;
+﻿using ZombieSurvivor.Core.Common;
 
-public record Skill(string Name);
+namespace ZombieSurvivor.Core.Skills;
+
+public record Skill(string Name, Level Level);

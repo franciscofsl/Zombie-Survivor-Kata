@@ -118,4 +118,12 @@ public sealed class Survivor
     {
         return Enumerable.Empty<Skill>().ToList();
     }
+
+    public IReadOnlyList<Skill> PotentialSkills()
+    {
+        return new List<Skill>
+        {
+            new Skill("Skill 1", Level.Yellow)
+        };
+    }
 }
