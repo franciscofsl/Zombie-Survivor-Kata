@@ -8,10 +8,15 @@ public class EquipmentCollection : IEnumerable<Item>
     private int _capacity;
     private readonly List<Item> _items;
 
-    internal EquipmentCollection(int initialCapacity)
+    internal EquipmentCollection(int initialCapacity) : this(initialCapacity, Enumerable.Empty<Item>().ToList())
     {
         _capacity = initialCapacity;
-        _items = new List<Item>();
+    }
+
+    internal EquipmentCollection(int initialCapacity, List<Item> items)
+    {
+        _capacity = initialCapacity;
+        _items = items;
     }
 
     public IEnumerator<Item> GetEnumerator()
@@ -40,6 +45,16 @@ public class EquipmentCollection : IEnumerable<Item>
     {
         _capacity -= 1;
         RemoveLastIfNotHasCapacity();
+    }
+
+    internal EquipmentCollection WithIncreasedCapacity(int increaseBy)
+    {
+        if (increaseBy <= 0)
+        {
+            throw new ArgumentException("Increase amount must be greater than zero.", nameof(increaseBy));
+        }
+
+        return new EquipmentCollection(_capacity + increaseBy, _items);
     }
 
     private void RemoveLastIfNotHasCapacity()

@@ -1,16 +1,23 @@
 ﻿namespace ZombieSurvivor.Core.Survivors.Equipments;
 
-public sealed class Equipment
+public sealed record Equipment
 {
     private const int MaxItemsInHand = 2;
-    private const int MaxItemsInReserve = 3;
+    private const int DefaultItemsInReserve = 3;
+    private readonly int _maxItemsInReserve;
     private readonly EquipmentCollection _inHand;
     private readonly EquipmentCollection _inReserve;
 
-    private Equipment()
+    private Equipment(int maxItemsInReserve, EquipmentCollection inHand, EquipmentCollection inReserve)
     {
-        _inHand = new EquipmentCollection(MaxItemsInHand);
-        _inReserve = new EquipmentCollection(MaxItemsInReserve);
+        _maxItemsInReserve = maxItemsInReserve;
+        _inHand = inHand;
+        _inReserve = inReserve;
+    }
+
+    private Equipment() : this(DefaultItemsInReserve, new EquipmentCollection(MaxItemsInHand),
+        new EquipmentCollection(DefaultItemsInReserve))
+    {
     }
 
     public static Equipment Default => new();
@@ -33,5 +40,11 @@ public sealed class Equipment
     internal void Readjust()
     {
         _inReserve.ReduceSize();
+    }
+
+    internal Equipment IncreaseCapacity()
+    {
+        var quantityToResize = _maxItemsInReserve + 1;
+        return new Equipment(quantityToResize, _inHand, new EquipmentCollection(quantityToResize, _inReserve.ToList()));
     }
 }

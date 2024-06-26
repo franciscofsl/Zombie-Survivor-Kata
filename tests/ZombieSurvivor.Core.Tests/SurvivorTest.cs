@@ -2,6 +2,7 @@
 using ZombieSurvivor.Core.Common;
 using ZombieSurvivor.Core.Enemies;
 using ZombieSurvivor.Core.Exceptions;
+using ZombieSurvivor.Core.Skills;
 using ZombieSurvivor.Core.Survivors;
 using ZombieSurvivor.Core.Survivors.Equipments;
 
@@ -278,5 +279,24 @@ public class SurvivorTest
         survivor.Kill(zombies);
 
         survivor.Actions.Should().Be(4);
+    }
+
+    [Fact]
+    public void Survivor_Who_Has_Hoard_Can_Carry_One_Additional_Equipment()
+    {
+        var zombies = Enumerable.Range(0, 20).Select(_ => Zombi.Create()).ToArray();
+        var survivor = Survivor.Create("Ace");
+        survivor.Kill(zombies);
+
+        survivor.AcquireEquipment(Item.Create("Straw hat"));
+        survivor.AcquireEquipment(Item.Create("Gomu Gomu no mi"));
+        survivor.AcquireEquipment(Item.Create("Mera Mera no mi"));
+        survivor.AcquireEquipment(Item.Create("Hito Hito no mi"));
+        survivor.AcquireEquipment(Item.Create("Hana Hana no mi"));
+        survivor.AcquireEquipment(Item.Create("Bara Bara no mi"));
+
+        survivor.UnlockedSkills().Should().Contain(_ => _ is HoardSkill);
+        survivor.InHandEquipment().Should().HaveCount(2);
+        survivor.InReserveEquipment().Should().HaveCount(4);
     }
 }

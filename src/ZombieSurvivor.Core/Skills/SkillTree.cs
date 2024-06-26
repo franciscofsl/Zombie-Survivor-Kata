@@ -14,11 +14,11 @@ public class SkillTree
         _potentialSkills = new List<Skill>
         {
             new OneMoreActionSkill(),
-            new("Skill 2", Level.Orange),
-            new("Skill 3", Level.Orange),
-            new("Skill 4", Level.Red),
-            new("Skill 5", Level.Red),
-            new("Skill 6", Level.Red)
+            new HoardSkill(),
+            new("+1 Die (Ranged)", Level.Orange),
+            new("+1 Die (Melee)", Level.Red),
+            new("+1 Free Move Action", Level.Red),
+            new("Sniper", Level.Red),
         };
     }
 
@@ -33,6 +33,11 @@ public class SkillTree
         {
             _unlockedSkills.Add(skill);
         }
+    }
+
+    internal bool IsUnlocked(Type type)
+    {
+        return _unlockedSkills.Any(_ => _.GetType() == type);
     }
 
     private Skill? AvailableSkill(Level level)
