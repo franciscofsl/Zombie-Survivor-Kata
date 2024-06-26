@@ -111,6 +111,11 @@ public sealed class Survivor
         Actions = Actions.IncrementAvailableActions();
     }
 
+    internal void IncrementEquipmentCapacity()
+    {
+        Equipment = Equipment.IncreaseCapacity();
+    }
+
     private void NotifyIfLevelUp(Level previousLevel)
     {
         if (previousLevel != CurrentLevel())
@@ -130,24 +135,13 @@ public sealed class Survivor
     private void UnlockSkillIfLevelUp(Level previousLevel)
     {
         var currentLevel = CurrentLevel();
-        if (previousLevel != currentLevel)
+        if (previousLevel == currentLevel)
         {
-            var unlockedSkill = Skills.UnlockByLevel(currentLevel);
-
-            unlockedSkill?.Apply(this);
-
-            if (currentLevel is Level.Orange)
-            {
-                IncreaseEquipmentCapacityIfUnlockHoart();
-            }
+            return;
         }
-    }
 
-    private void IncreaseEquipmentCapacityIfUnlockHoart()
-    {
-        if (Skills.IsUnlocked(typeof(HoardSkill)))
-        {
-            Equipment = Equipment.IncreaseCapacity();
-        }
+        var unlockedSkill = Skills.UnlockByLevel(currentLevel);
+
+        unlockedSkill?.Apply(this);
     }
 }
