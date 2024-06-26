@@ -133,7 +133,7 @@ public sealed class Survivor
 
     private void IncreaseActionsIfUnlockOneMoreAction()
     {
-        if (Skills.UnlockedSkills().Any(_ => _.GetType() == typeof(OneMoreActionSkill)))
+        if (Skills.UnlockedSkills().Any(_ => _ is OneMoreActionSkill))
         {
             Actions = Actions.OneMoreAction();
         }
