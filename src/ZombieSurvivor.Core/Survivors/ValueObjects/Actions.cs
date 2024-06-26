@@ -44,11 +44,8 @@ public sealed class Actions
         return new Actions(_value - 1);
     }
 
-    public Actions OneMoreAction()
+    internal Actions IncrementAvailableActions()
     {
-        return new Actions(_max + 1)
-        {
-            _max = _max + 1
-        };
+        return new Actions(_max + 1);
     }
 }

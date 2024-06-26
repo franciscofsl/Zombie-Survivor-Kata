@@ -106,6 +106,11 @@ public sealed class Survivor
 
     public IReadOnlyList<Skill> PotentialSkills() => Skills.PotentialSkills();
 
+    internal void IncrementMaxActions()
+    {
+        Actions = Actions.IncrementAvailableActions();
+    }
+
     private void NotifyIfLevelUp(Level previousLevel)
     {
         if (previousLevel != CurrentLevel())
@@ -127,25 +132,16 @@ public sealed class Survivor
         var currentLevel = CurrentLevel();
         if (previousLevel != currentLevel)
         {
-            Skills.UnlockByLevel(currentLevel);
-            if (currentLevel is Level.Yellow)
-            {
-                IncreaseActionsIfUnlockOneMoreAction();
-            }
-            else if (currentLevel is Level.Orange)
+            var unlockedSkill = Skills.UnlockByLevel(currentLevel);
+
+            unlockedSkill?.Apply(this);
+
+            if (currentLevel is Level.Orange)
             {
                 IncreaseEquipmentCapacityIfUnlockHoart();
             }
         }
     }
-
-    private void IncreaseActionsIfUnlockOneMoreAction()
-    {
-        if (Skills.IsUnlocked(typeof(OneMoreActionSkill)))
-        {
-            Actions = Actions.OneMoreAction();
-        }
-    } 
 
     private void IncreaseEquipmentCapacityIfUnlockHoart()
     {

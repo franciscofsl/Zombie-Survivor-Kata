@@ -26,13 +26,15 @@ public class SkillTree
 
     internal IReadOnlyList<Skill> PotentialSkills() => _potentialSkills.AsReadOnly();
 
-    internal void UnlockByLevel(Level level)
+    internal Skill UnlockByLevel(Level level)
     {
         var skill = AvailableSkill(level);
         if (skill is not null)
         {
             _unlockedSkills.Add(skill);
         }
+
+        return skill;
     }
 
     internal bool IsUnlocked(Type type)
