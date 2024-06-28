@@ -168,7 +168,7 @@ public class SurvivorTest
     public void Survivor_Should_Gain_1_Experience_When_Kill_Zombie()
     {
         var survivor = Survivor.Create("Buggy");
-        var zombi = Zombi.Create();
+        var zombi = Zombi.Spawn();
 
         survivor.Kill(zombi);
 
@@ -180,7 +180,7 @@ public class SurvivorTest
     {
         var survivor = Survivor.Create("Buggy");
 
-        var enemies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(7);
         survivor.Kill(enemies);
 
         survivor.CurrentLevel().Should().Be(Level.Yellow);
@@ -191,7 +191,7 @@ public class SurvivorTest
     {
         var survivor = Survivor.Create("Buggy");
 
-        var enemies = Enumerable.Range(0, 19).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(19);
         survivor.Kill(enemies);
 
         survivor.CurrentLevel().Should().Be(Level.Orange);
@@ -202,7 +202,7 @@ public class SurvivorTest
     {
         var survivor = Survivor.Create("Buggy");
 
-        var enemies = Enumerable.Range(0, 43).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(43);
         survivor.Kill(enemies);
 
         survivor.CurrentLevel().Should().Be(Level.Red);
@@ -244,7 +244,7 @@ public class SurvivorTest
     public void Survivor_Should_Unlock_Plus_1_Action_When_Level_Up_To_Yellow()
     {
         var survivor = Survivor.Create("Sanji");
-        var enemies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(7);
         survivor.Kill(enemies);
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Yellow, Name: "+1 Action" }).Should().HaveCount(1);
@@ -254,7 +254,7 @@ public class SurvivorTest
     public void Survivor_Should_Unlock_Orange_Skill_When_Level_Up_To_Orange()
     {
         var survivor = Survivor.Create("Sanji");
-        var enemies = Enumerable.Range(0, 19).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(19);
         survivor.Kill(enemies);
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Orange }).Should().HaveCount(1);
@@ -264,7 +264,7 @@ public class SurvivorTest
     public void Survivor_Should_Unlock_Red_Skill_When_Level_Up_To_Red()
     {
         var survivor = Survivor.Create("Zoro");
-        var enemies = Enumerable.Range(0, 48).Select(_ => Zombi.Create()).ToArray();
+        var enemies = Zombi.Spawn(48);
         survivor.Kill(enemies);
 
         survivor.UnlockedSkills().Where(_ => _ is { Level: Level.Red }).Should().HaveCount(1);
@@ -273,7 +273,7 @@ public class SurvivorTest
     [Fact]
     public void Survivor_Who_Has_One_More_Action_Should_Have_One_Additional_Action()
     {
-        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var zombies = Zombi.Spawn(7);
         var survivor = Survivor.Create("Sabo");
 
         survivor.Kill(zombies);
@@ -284,7 +284,7 @@ public class SurvivorTest
     [Fact]
     public void Survivor_Who_Has_Hoard_Can_Carry_One_Additional_Equipment()
     {
-        var zombies = Enumerable.Range(0, 20).Select(_ => Zombi.Create()).ToArray();
+        var zombies = Zombi.Spawn(20);
         var survivor = Survivor.Create("Ace");
         survivor.Kill(zombies);
 

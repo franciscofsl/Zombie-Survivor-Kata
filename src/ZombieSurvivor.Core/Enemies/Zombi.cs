@@ -9,7 +9,12 @@ public class Zombi : IEnemy
     {
     }
 
-    public static Zombi Create() => new();
+    public static Zombi[] Spawn(int quantity = 1)
+    {
+        return Enumerable.Range(0, quantity)
+            .Select(_ => new Zombi())
+            .ToArray();
+    }
 
     public Experience ExperienceAtDie() => Experience.Of(1);
 }

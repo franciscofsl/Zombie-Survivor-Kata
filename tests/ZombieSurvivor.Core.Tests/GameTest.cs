@@ -70,7 +70,7 @@ public class GameTest
     [Fact]
     public void Game_Level_Should_Be_Equal_Than_High_Survivor_Level()
     {
-        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var zombies = Zombi.Spawn(7);
         var survivor = Survivor.Create("Jimbe");
         var game = Game.Start();
         game.AddSurvivor(survivor);
@@ -139,7 +139,7 @@ public class GameTest
     [Fact]
     public void Game_History_Should_Record_When_Survivor_Level_Up()
     {
-        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var zombies = Zombi.Spawn(7);
         var survivor = Survivor.Create("Jimbe");
         var game = Game.Start();
         game.AddSurvivor(survivor);
@@ -152,7 +152,7 @@ public class GameTest
     [Fact]
     public void Game_History_Should_Record_When_Game_Level_Up()
     {
-        var zombies = Enumerable.Range(0, 7).Select(_ => Zombi.Create()).ToArray();
+        var zombies = Zombi.Spawn(7);
         var survivor = Survivor.Create("Jimbe");
         var game = Game.Start();
         game.AddSurvivor(survivor);
